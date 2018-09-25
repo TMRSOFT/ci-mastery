@@ -6,4 +6,4 @@ On terminal write "npm install"
 then "npm start"
 
 # contributing
-email to "developez@gg.com"
+email to "developez@gg.com" or "alep"
