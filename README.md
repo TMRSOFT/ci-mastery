@@ -8,5 +8,3 @@ then "npm start"
 # contributing
 email to "developez@gg.com" or "alep"
 
-# license
-using Apache license
