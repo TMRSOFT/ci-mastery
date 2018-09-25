@@ -1,0 +1,23 @@
+doctype html
+html
+	head
+		title=title
+		link(type='text/css', rel='stylesheet', href='./css/materialize.min.css', media='screen,projection')
+		link(type='text/css', rel='stylesheet', href='./css/style.css', media='screen,projection')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+	body.grey.lighten-2
+		.navbar-fixed
+			nav.red.darken-4
+				.container
+					.nav-wrapper
+						a.brand-logo(href='/')
+							i.material-icons home
+							| Continuous Integration
+		.container
+			.row
+				.s12
+					block content
+		script(src='./socket.io/socket.io.js')
+		script(src='./js/materialize.min.js')
+		script(src='./js/script.js')
+		block scripts
