@@ -4,3 +4,6 @@ A continuous integration example using Mongodb, NodeJs with ExpressJs framework,
 # installing the project
 On terminal write "npm install"
 then "npm start"
+
+# contributing
+email to "developez@gg.com"
