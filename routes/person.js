@@ -14,6 +14,7 @@ var returnRouter = function (io) {
 		});
 	});
 
+	/* TODO: remove post routes. */
 	router.post('/', function (req, res, next) {
 		modelPerson.insert({
 			name: req.body.name,
