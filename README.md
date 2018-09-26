@@ -6,7 +6,7 @@ On terminal write "npm install"
 then "npm start"
 
 # contributing
-email to "lopezsandi1666@gmail.com" or "alep"
+email to "lopezsandi1666@ggmail.com" or "alep"
 
 # license
 using Apache license
