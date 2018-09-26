@@ -45,6 +45,7 @@ block scripts
         var inputLastName = document.getElementById('inputLastName');
         var inputBirthday = document.getElementById('inputBirthday');
         var table = document.getElementById("table");
+        var picker = M.Datepicker.getInstance(inputBirthday);
         var editing = false;
 
         newButton.addEventListener('click', () => {
@@ -56,6 +57,10 @@ block scripts
             inputBirthday.value = '';
             editing = false;
             modal.open();
+        });
+
+        inputBirthday.addEventListener('focus', () => {
+            picker.open();
         });
 
         modalSumbit.addEventListener('click', () => {
