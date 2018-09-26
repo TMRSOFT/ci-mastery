@@ -11,5 +11,3 @@ email to "lopezsandi1666@ggmail.com" or "alep"
 # license
 using Apache license
 
-# test
-this is not a test
