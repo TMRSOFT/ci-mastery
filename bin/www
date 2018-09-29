@@ -68,7 +68,7 @@ app.set('port', port);
 	});
 
 	if (app.get('env') === 'development'){
-		console.log(os.networkInterfaces());
+		//console.log(os.networkInterfaces());
 	}
 
 	/**
