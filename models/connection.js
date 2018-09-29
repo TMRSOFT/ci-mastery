@@ -2,6 +2,7 @@ var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var url = 'mongodb://ci-mastery-user:ci-mastery-password-6@ds213183.mlab.com:13183/ci-mastery';
 var dbName = 'ci-mastery';
+console.log(process.env.NODE_ENV) 
 
 var connect = new Promise((resolve, reject) => {
 	MongoClient.connect(url, {useNewUrlParser: true}, function(err, client) {

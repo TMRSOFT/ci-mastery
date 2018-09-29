@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node ./bin/www",
-    "start-production": "set NODE_ENV=production&& node ./bin/www",
+    "production": "set NODE_ENV=production&& node ./bin/www",
     "mocha": "mocha",
     "test": "start-server-and-test http://localhost:9000 mocha"
   },
