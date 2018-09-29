@@ -14,7 +14,7 @@ var cluster = require('cluster');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '80');
+var port = normalizePort(process.env.PORT || '9000');
 app.set('port', port);
 
 // Code to run if we're in the master process
@@ -67,6 +67,12 @@ app.set('port', port);
 				throw error;
 		}
 	});
+
+	var os = require( 'os' );
+
+	var networkInterfaces = os.networkInterfaces( );
+		
+	console.log( networkInterfaces );
 
 	/**
 	 * Event listener for HTTP server "listening" event.
