@@ -68,11 +68,9 @@ app.set('port', port);
 		}
 	});
 
-	var os = require( 'os' );
-
-	var networkInterfaces = os.networkInterfaces( );
-		
-	console.log( networkInterfaces );
+	if (app.get('env') === 'development'){
+		console.log(os.networkInterfaces( ));
+	}
 
 	/**
 	 * Event listener for HTTP server "listening" event.
@@ -82,7 +80,7 @@ app.set('port', port);
 		var bind = typeof addr === 'string'
 			? `${addr.address}`
 			: `port ${addr.port}`;
-		console.log(`Server running on ${bind}`);
+		console.log(`Server running on ${bind} in ${app.get('env')} mode.`);
 		//console.log(`Server listening ${addr.address == '::' ? 'localhost' : addr.address}:${addr.port}`);
 	});
 //}
