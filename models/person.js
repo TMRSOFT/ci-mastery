@@ -3,17 +3,33 @@ var mongodb = require('mongodb');
 const con = require("./connection"),
     collectionName = "person";
 
-/** 
- * Table Person
+/**
+ * @constructor
+ * @namespace personModel
+ * @version 1.0
+ * @property {function} select - Router handler for GET method of /person URL.
+ * @property {function} insert - Router handler for POST method of /person URL.
+ * @property {function} update - SocketIo event for connections to person room.
+ * @property {function} remove - SocketIo event for connections to person room.
+ * @class person
+ * <br>A Person object contains:<br>&nbsp&nbsp
  * 
- * @param {string} id Person`s identification key (optional)
- * @param {string} name Person's name
- * @param {string} lastName Person's last name
- * @param {date} birthday Person's birthday
- *
-**/
+ * {string} id - Person`s identification key (optional)<br>&nbsp&nbsp
+ * 
+ * {string} name - Person's name <br>&nbsp&nbsp
+ * 
+ * {string} lastName - Person's last name <br>&nbsp&nbsp
+ * 
+ * {Date} birthday - Person's birth date <br>&nbsp&nbsp
+ */
 
 var model = {
+    /**
+     * Query selection for person collection.
+     * @method select
+     * @param {object} data - Query filters. 
+     * @memberof personModel
+     */
     select: (data={}) => {
         return new Promise((resolve, reject) => {
             con.then((db) => {
@@ -25,6 +41,16 @@ var model = {
             });
         });
     },
+    /**
+     * Insert query to for a person document. Returns inserted document.
+     * @method insert
+     * @param {object} data - Query filters.
+     * @returns {object} 
+     * @property {string} data.name - Person's name.
+     * @property {string} data.lastName - Person's paternal and maternal last name.
+     * @property {Date} data.birthday - Person's birth date.
+     * @memberof personModel
+     */
     insert: (data) => {
         return new Promise((resolve, reject) => {
             con.then((db) => {
@@ -37,7 +63,18 @@ var model = {
                 });
             });
         });
-    },
+    },	 
+    /**
+     * Update query to for a person document. Returns updated document.
+     * @method update
+     * @param {object} data - Query filters.
+     * @returns {object} 
+     * @property {string} data.id - Person's ID to update.
+     * @property {string} data.name - New Person's name to replace.
+     * @property {string} data.lastName - New Person's paternal and maternal last name to replace.
+     * @property {Date} data.birthday - New Person's birth date to replace.
+     * @memberof personModel
+    */
     update: (data) => {
         return new Promise((resolve, reject) => {
             con.then((db) => {
@@ -50,6 +87,13 @@ var model = {
             });
         });
     },
+    /**
+     * Remove query to for a person document. Returns document ID to confirm removing.
+     * @method remove
+     * @param {string} id - Person's ID document to remove.
+     * @returns {string}
+     * @memberof personModel
+     */
     remove: (id) => {
         return new Promise((resolve, reject) => {
             con.then((db) => {
