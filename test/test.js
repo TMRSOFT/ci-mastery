@@ -146,7 +146,7 @@ describe('Unit testing', function () {
 	});
 
 	describe("DELETE Request to Person API to delete the inserted person", function () {
-		it("should return object with success parameter equal true", function (done) {
+		it("should return object with success parameter equal true and the id of the inserted person", function (done) {
 			var testData = { 
 				id: testId,
 			}
