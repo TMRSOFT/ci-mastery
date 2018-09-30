@@ -33,8 +33,28 @@ var personRouter = function (io) {
 	});
 
 	/**
-     * POST method handler for person router.
-     * @function post
+     * GET API method handler for person router (queries).
+     * @function getApi
+     * @param {object} req - Represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, etc.
+     * @param {object} res - Represents the HTTP response that an Express app sends when it gets an HTTP request.
+     * @param {object} next - Indicates the next middleware function.
+	 * @memberof personRouter
+     */
+	router.get('/api/:id', (req, res, next) => {
+		modelPerson.select({id: req.params.id}).then((people) => {
+			res.status(200);
+			res.setHeader('Content-Type', 'application/json');
+			res.json({
+				data: people[0],
+				message: `Query successfully executed, returned object.`,
+				success: true
+			});
+		});
+	});
+
+	/**
+     * POST method handler for person router (insertions).
+     * @function postApi
      * @param {object} req - Represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, etc.
      * @param {object} res - Represents the HTTP response that an Express app sends when it gets an HTTP request.
      * @param {object} next - Indicates the next middleware function.
@@ -58,20 +78,25 @@ var personRouter = function (io) {
 	});
 
 	/**
-     * GET API method handler for person router.
-     * @function get
+     * PUT method handler for person router (updates).
+     * @function putApi
      * @param {object} req - Represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, etc.
      * @param {object} res - Represents the HTTP response that an Express app sends when it gets an HTTP request.
      * @param {object} next - Indicates the next middleware function.
-	 * @memberof personRouter
+     * @memberof personRouter
      */
-	router.get('/api/:id', (req, res, next) => {
-		modelPerson.select({id: req.params.id}).then((people) => {
-			res.status(200);
+	router.put('/api/', (req, res, next) => {
+		modelPerson.update({
+			id: req.body.id,
+			name: req.body.name,
+			lastName: req.body.lastName,
+			birthday: req.body.birthday
+		}).then((person) => {
+			res.status(202);
 			res.setHeader('Content-Type', 'application/json');
 			res.json({
-				data: people[0],
-				message: `Query successfully executed, returned object.`,
+				data: person,
+				message: `Query successfully executed, person updated correctly.`,
 				success: true
 			});
 		});

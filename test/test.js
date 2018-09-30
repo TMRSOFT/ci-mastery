@@ -69,7 +69,7 @@ describe('Unit testing', function () {
 		server = null;
 	});
 
-	describe("Post Request to Person API to insert a new person", function () {
+	describe("POST Request to Person API to insert a new person", function () {
 		it("should return person object", function (done) {
 			server
 				.post('/api')
@@ -92,7 +92,7 @@ describe('Unit testing', function () {
 		});
 	});
 
-	describe("Get Request to Person API to retrieve a person object", function () {
+	describe("GET Request to Person API to retrieve a person object", function () {
 		it("should return person object", function (done) {
 			server
 				.get(`/api/${testId}`)
@@ -113,7 +113,7 @@ describe('Unit testing', function () {
 		});
 	});
 
-	describe("Post Request to Person API to update the inserted person", function () {
+	describe("PUT Request to Person API to update the inserted person", function () {
 		it("should return the person object updated", function (done) {
 			var testData = { 
 				id: testId,
@@ -139,7 +139,7 @@ describe('Unit testing', function () {
 					assert.equal(testData.id, res.body.data._id);
 					assert.equal(testData.name, res.body.data.name);
 					assert.equal(testData.lastName, res.body.data.lastName);
-					assert.equal(testData.birthday, res.body.data.birthday);
+					assert.equal(testData.birthday.toISOString(), res.body.data.birthday);
 					done();
 				});
 		});
