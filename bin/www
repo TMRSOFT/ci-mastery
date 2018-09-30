@@ -5,15 +5,18 @@
  */
 
 var app = require('../app');
+var path = require('path');
 var http = require('http');
 var os = require('os');
 var cluster = require('cluster');
+var nconf = require('nconf');
+nconf.argv().env().file({file: path.join(__dirname, '..', 'config.json')});
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '9000');
+var port = normalizePort(process.env.PORT || nconf.get(app.get('env')).port);
 app.set('port', port);
 
 // Code to run if we're in the master process
@@ -67,8 +70,11 @@ app.set('port', port);
 		}
 	});
 
+	/**
+	 * Server log.
+	 */
 	if (app.get('env') === 'development'){
-		//console.log(os.networkInterfaces());
+		console.log(os.networkInterfaces());
 	}
 
 	/**
@@ -79,8 +85,8 @@ app.set('port', port);
 		var bind = typeof addr === 'string'
 			? `${addr.address}`
 			: `port ${addr.port}`;
-		console.log(`Server running on ${bind} in ${app.get('env')} mode.`);
-		//console.log(`Server listening ${addr.address == '::' ? 'localhost' : addr.address}:${addr.port}`);
+		//console.log(`Server running on ${bind} `);
+		console.log(`Server listening ${addr.address == '::' ? 'localhost' : addr.address}:${addr.port} in ${app.get('env')} mode.`);
 	});
 //}
 

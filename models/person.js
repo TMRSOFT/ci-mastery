@@ -25,9 +25,10 @@ const con = require("./connection"),
 
 var model = {
     /**
-     * Query selection for person collection.
+     * Query selection for person collection. Returns an array of selected documents
      * @method select
      * @param {object} data - Query filters. 
+     * @returns {array} 
      * @memberof personModel
      */
     select: (data={}) => {
