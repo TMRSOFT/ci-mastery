@@ -1,42 +1,68 @@
 var supertest = require("supertest");
 var should = require("should");
 var assert = require('assert');
-
-// This agent refers to PORT where the program is running.
-
-var server = supertest.agent("http://localhost:9000");
+var path = require('path');
+var nconf = require('nconf');
+var assert = require('assert');
+nconf.argv().env().file({ file: path.join(__dirname, '..', 'config.json') });
 
 // UNIT test begin
 
-describe('Array', function () {
-	describe('#indexOf()', function () {
-		it('should return -1 when the value is not present', function () {
-			assert.equal([1, 2, 3].indexOf(4), -1);
+
+describe('Acceptance testing', function () {
+
+	var server = "";
+
+	before(function () {
+		console.log("Executing test cases of Acceptance testing.");
+	});
+
+	after(function () {
+		console.log("Finished test cases of Acceptance testing.");
+	});
+
+	beforeEach(function () {
+		server = supertest.agent(`http://localhost:${nconf.get('development').port}`);
+	});
+
+	afterEach(function () {
+		server = "";
+	});
+
+	describe("GET Request to home page of the web app", function () {
+		it("should return home page", function (done) {
+			server
+				.get("/")
+				.expect("Content-type", /text/)
+				.expect(200)
+				.end(function (err, res) {
+					res.status.should.equal(200);
+					done();
+				});
 		});
 	});
 });
 
-describe('Two plus 2', function () {
-	describe('#plus()', function () {
-		it('should return 4 when 2 plus 2', function () {
-			assert.equal(2 + 2, 4);
-		});
+describe('Unit testing', function () {
+
+	var server = ""
+
+	before(function () {
+		console.log("Executing test cases of Unit testing.");
 	});
+
+	after(function () {
+		console.log("Finished test cases of Unit testing.");
+	});
+
+	beforeEach(function () {
+		server = supertest.agent(`http://localhost:${nconf.get('development').port}`);
+	});
+
+	afterEach(function () {
+		server = "";
+	});
+
+	
 });
 
-describe("SAMPLE unit test", function () {
-
-	// #1 should return home page
-	it("should return home page", function (done) {
-		// calling home page
-		server
-			.get("/")
-			.expect("Content-type", /text/)
-			.expect(200) // THis is HTTP response
-			.end(function (err, res) {
-				// HTTP status should be 200
-				res.status.should.equal(200);
-				done();
-			});
-	});
-});
