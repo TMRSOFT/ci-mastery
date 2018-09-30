@@ -49,6 +49,7 @@ describe('Unit testing', function () {
 
 	var serverUrl = "";
 	var server = null;
+	var testId = null;
 
 	before(function () {
 		console.log("Executing test cases of Unit testing.");
@@ -85,6 +86,7 @@ describe('Unit testing', function () {
 					res.body.data.should.have.property('name');
 					res.body.data.should.have.property('lastName');
 					res.body.data.should.have.property('birthday');
+					testId = res.body.data._id;
 					done();
 				});
 		});
@@ -93,7 +95,7 @@ describe('Unit testing', function () {
 	describe("Get Request to Person API to retrieve a person object", function () {
 		it("should return person object", function (done) {
 			server
-				.get('/api/5bb10fdaccff771c04b5035f')
+				.get(`/api/${testId}`)
 				.expect(200)
 				.expect('Content-Type', /json/)
 				.end(function (err, res) {
@@ -106,6 +108,38 @@ describe('Unit testing', function () {
 					res.body.data.should.have.property('name');
 					res.body.data.should.have.property('lastName');
 					res.body.data.should.have.property('birthday');
+					done();
+				});
+		});
+	});
+
+	describe("Post Request to Person API to update the inserted person", function () {
+		it("should return the person object updated", function (done) {
+			var testData = { 
+				id: testId,
+				name: "Name Test Updated",
+				lastName: "Last Name Test Updated",
+				birthday: new Date(2018, 11, 24)
+			}
+			server
+				.put('/api')
+				.send(testData)
+				.expect(202)
+				.expect('Content-Type', /json/)
+				.end(function (err, res) {
+					res.status.should.equal(202);
+					if (err) done(err);
+					res.body.should.have.property('data');
+					res.body.should.have.property('message');
+					res.body.should.have.property('success');
+					res.body.data.should.have.property('_id');
+					res.body.data.should.have.property('name');
+					res.body.data.should.have.property('lastName');
+					res.body.data.should.have.property('birthday');
+					assert.equal(testData.id, res.body.data._id);
+					assert.equal(testData.name, res.body.data.name);
+					assert.equal(testData.lastName, res.body.data.lastName);
+					assert.equal(testData.birthday, res.body.data.birthday);
 					done();
 				});
 		});
