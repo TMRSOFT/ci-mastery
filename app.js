@@ -3,8 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var packageJson = require('./package.json');
 
 var personRouter = require('./routes/person');
+var wikiRouter = require('./routes/wiki');
 var killmeRouter = require('./routes/kill-me');
 
 var app = express();
@@ -22,6 +24,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', personRouter(ioPerson));
+app.use('/wiki', wikiRouter);
 app.use('/killme', killmeRouter);
 
 // catch 404 and forward to error handler.

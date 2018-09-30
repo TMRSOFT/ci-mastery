@@ -17,18 +17,22 @@ That's all! :D
 
 ### Installing
 
-A step by step series of examples that tell you have to get a Development env. running.
+A step by step series of examples that tell you have to get a Development or Production env. running.
 
-* Clone the project to your local computer
-* Inside the project folder, open a command prompt and write
+* Clone the project to your local computer.
+* Inside the project folder, open a command prompt and write:
 ```
 npm install
 ```
-* Then
+* Then if you want to start in Development mode, write:
 ```
 npm start
 ```
-* And the server will start running at [Localhost](http://localhost)
+* Or if you want to start in Production mode, write:
+```
+npm run production
+```
+* And the server will start running at [Localhost](http://localhost:9000) listening to port 9000.
 
 ### Tests
 

@@ -13,6 +13,31 @@ html
 						a.brand-logo(href='/')
 							i.material-icons home
 							| Continuous Integration
+						a.sidenav-trigger(href='#', data-target='mobile-nav')
+							i.material-icons menu
+						ul#nav-mobile.right.hide-on-med-and-down
+							li
+								a(href='/wiki', target='_blank')
+									i.material-icons.left book
+									| Wiki code
+		ul#mobile-nav.sidenav
+			li
+			.user-view
+				.background.red.darken-4
+				a(href='#user')
+					img.circle(src='/img/PenguinDab.png')
+				a(href='https://github.com/TMRSOFT/', target='_blank')
+					span.white-text.name TMRSOFT
+				a(href='https://github.com/TMRSOFT/ci-mastery', target='_blank')
+					span.white-text.email Continuous Integration project
+			li
+				a(href='/wiki', target='_blank')
+					i.material-icons.left book
+					| Wiki code
+			li
+				.divider
+			li
+				a.subheader Subheader
 		.container
 			.row
 				.s12
