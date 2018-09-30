@@ -35,12 +35,12 @@ var personRouter = function (io) {
 	/**
      * POST method handler for person router.
      * @function post
-     * @param {object} req - Step Object to be added to the children array of steps.
-     * @param {object} res - Step Object to be added to the children array of steps.
-     * @param {object} next - Step Object to be added to the children array of steps.
+     * @param {object} req - Represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, etc.
+     * @param {object} res - Represents the HTTP response that an Express app sends when it gets an HTTP request.
+     * @param {object} next - Indicates the next middleware function.
      * @memberof personRouter
      */
-	router.post('/', (req, res, next) => {
+	router.post('/api/', (req, res, next) => {
 		modelPerson.insert({
 			name: req.body.name,
 			lastName: req.body.lastName,
@@ -48,11 +48,32 @@ var personRouter = function (io) {
 		}).then((person) => {
 			res.status(201);
 			res.location(`${req.protocol}://${req.get("host")}${req.originalUrl}/${person._id}`);
-			res.send({
+			res.setHeader('Content-Type', 'application/json');
+			res.json({
 				data: person,
-				message: `New person inserted.`,
+				message: `Query successfully executed, new person inserted.`,
 				success: true
-			})
+			});
+		});
+	});
+
+	/**
+     * GET API method handler for person router.
+     * @function get
+     * @param {object} req - Represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, etc.
+     * @param {object} res - Represents the HTTP response that an Express app sends when it gets an HTTP request.
+     * @param {object} next - Indicates the next middleware function.
+	 * @memberof personRouter
+     */
+	router.get('/api/:id', (req, res, next) => {
+		modelPerson.select({id: req.params.id}).then((people) => {
+			res.status(200);
+			res.setHeader('Content-Type', 'application/json');
+			res.json({
+				data: people[0],
+				message: `Query successfully executed, returned object.`,
+				success: true
+			});
 		});
 	});
 

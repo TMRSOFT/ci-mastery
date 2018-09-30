@@ -32,6 +32,10 @@ var model = {
      * @memberof personModel
      */
     select: (data={}) => {
+        if (data.id){
+            data._id = new mongodb.ObjectID(data.id)
+            delete data.id;
+        }
         return new Promise((resolve, reject) => {
             con.then((db) => {
                 const collection = db.collection(collectionName);
@@ -81,7 +85,7 @@ var model = {
             con.then((db) => {
                 const collection = db.collection(collectionName);
                 collection.findOneAndUpdate({_id: new mongodb.ObjectID(data.id)}, {$set: data}, function(err, docs) {
-                    model.select({_id: new mongodb.ObjectID(data.id)}).then((doc) => {
+                    model.select({id: data.id}).then((doc) => {
                         resolve(doc[0])
                     })
                 });
