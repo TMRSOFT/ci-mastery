@@ -19,10 +19,10 @@ var personRouter = function (io) {
      * @function get
      * @param {object} req - Represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, etc.
      * @param {object} res - Represents the HTTP response that an Express app sends when it gets an HTTP request.
-     * @param {object} next - Iindicates the next middleware function.
+     * @param {object} next - Indicates the next middleware function.
 	 * @memberof personRouter
      */
-	router.get('/', function (req, res, next) {
+	router.get('/', (req, res, next) => {
 		modelPerson.select().then((people) => {
 			res.render('person/index', {
 				title: 'Person',
@@ -39,7 +39,7 @@ var personRouter = function (io) {
      * @param {object} next - Step Object to be added to the children array of steps.
      * @memberof personRouter
      */
-	router.post('/', function (req, res, next) {
+	router.post('/', (req, res, next) => {
 		modelPerson.insert({
 			name: req.body.name,
 			lastName: req.body.lastName,
@@ -64,7 +64,7 @@ var personRouter = function (io) {
 	 * @property {SocketIO} io.onRemove - SocketIo event for person record removes.
      * @memberof personRouter
      */
-	io.on('connection', function (socket) {
+	io.on('connection', (socket) => {
 		/**
 		 * Socket listener for insert events.
 		 * @function socket-onInsert
@@ -74,7 +74,7 @@ var personRouter = function (io) {
 		 * @property {Date} data.birthday - Person's birth date.
 		 * @memberof personRouter
 		 */
-        socket.on('insert', function(data) {
+        socket.on('insert', (data) => {
             modelPerson.insert(data).then((person) => {
 				var fn = pug.compileFile('./views/person/row.pug');
 				io.emit('inserted', {
@@ -93,7 +93,7 @@ var personRouter = function (io) {
 		 * @property {Date} data.birthday - New Person's birth date to replace.
 		 * @memberof personRouter
 		 */
-		socket.on('update', function(data) {
+		socket.on('update', (data) => {
             modelPerson.update(data).then((person) => {
 				var fn = pug.compileFile('./views/person/row.pug');
 				io.emit('updated', {
@@ -105,11 +105,11 @@ var personRouter = function (io) {
 		/**
 		 * Socket listener for update events.
 		 * @function socket-onRemove
-		 * @param {object} data - Data recieved for person to remove.
+		 * @param {object} data - Data received for person to remove.
 		 * @property {string} data.id - Person's ID to remove.
 		 * @memberof personRouter
 		 */
-		socket.on('remove', function(data) {
+		socket.on('remove', (data) => {
             modelPerson.remove(data.id).then((id) => {
 				io.emit('removed', {
 					id: id,
