@@ -17,7 +17,7 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
-    "http-errors": "~1.6.2",
+    "jsdoc": "^3.5.5",
     "istanbul": "^0.4.5",
     "materialize-css": "^1.0.0-rc.2",
     "mongodb": "^3.1.6",
@@ -27,8 +27,7 @@
     "pug": "2.0.0-beta11",
     "socket.io": "^2.1.1"
   },
-  "devDependencies": {
-    "jsdoc": "^3.5.5",
+  "devDependencies": {    
     "mocha": "5.2.0",
     "should": "13.2.3",
     "start-server-and-test": "^1.7.1",
