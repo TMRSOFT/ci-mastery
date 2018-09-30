@@ -144,5 +144,27 @@ describe('Unit testing', function () {
 				});
 		});
 	});
+
+	describe("DELETE Request to Person API to delete the inserted person", function () {
+		it("should return object with success parameter equal true", function (done) {
+			var testData = { 
+				id: testId,
+			}
+			server
+				.delete('/api')
+				.send(testData)
+				.expect(202)
+				.expect('Content-Type', /json/)
+				.end(function (err, res) {
+					res.status.should.equal(202);
+					if (err) done(err);
+					res.body.should.have.property('data');
+					res.body.should.have.property('message');
+					res.body.should.have.property('success');
+					assert.equal(true, res.body.data.success);
+					done();
+				});
+		});
+	});
 });
 
