@@ -18,7 +18,7 @@ var mongoConfig = nconf.get(app.get('env')).mongoConfig;
 var connect = new Promise((resolve, reject) => {
 	MongoClient.connect(mongoConfig.url, {useNewUrlParser: true}, (err, client) => {
 		assert.equal(null, err);
-		console.log("Connected successfully to Mlab Database Server");
+		console.log(`Connected successfully to Mlab ${app.get('env')} Database Server`);
 		resolve(client.db(mongoConfig.dbName));
 		//client.close();
 	});
