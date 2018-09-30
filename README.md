@@ -40,6 +40,13 @@ npm run production
 npm test
 ```
 
+### Code documentation
+
+* Go to [Localhost/wiki](http://localhost:9000/wiki) after deployment with Jenkins. Or run:
+```
+jsdoc .\routes\person.js .\models\person.js .\models\connection.js -d public/wiki
+```
+
 ## Authors
 
 * **Luis Daniel** - *Developer*
@@ -57,4 +64,5 @@ This project is licensed under the Apache License - see the [LICENSE.md](LICENSE
 * Mochajs
 * Jenkins
 * Blue Ocean
+* Google JavaScript Style Guide
 * Videogame gods
