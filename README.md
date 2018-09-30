@@ -1,7 +1,6 @@
 # ci-mastery
-[![Coverage Status](https://coveralls.io/repos/github/TMRSOFT/ci-mastery/badge.svg?branch=master)](https://coveralls.io/github/TMRSOFT/ci-mastery?branch=master)
 
-A continuous integration example using Mongodb, NodeJs with ExpressJs framework, Mochajs and Jenkis as CI
+A continuous integration example using Mongodb, NodeJs with ExpressJs framework, Mochajs and Jenkins as CI
 
 ## Getting Started
 
