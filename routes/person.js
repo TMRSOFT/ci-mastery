@@ -53,7 +53,7 @@ var personRouter = function (io) {
 	});
 
 	/**
-     * POST method handler for person router (insertions).
+     * POST API method handler for person router (insertions).
      * @function postApi
      * @param {object} req - Represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, etc.
      * @param {object} res - Represents the HTTP response that an Express app sends when it gets an HTTP request.
@@ -78,7 +78,7 @@ var personRouter = function (io) {
 	});
 
 	/**
-     * PUT method handler for person router (updates).
+     * PUT API method handler for person router (updates).
      * @function putApi
      * @param {object} req - Represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, etc.
      * @param {object} res - Represents the HTTP response that an Express app sends when it gets an HTTP request.
@@ -103,7 +103,7 @@ var personRouter = function (io) {
 	});
 
 	/**
-     * Delete method handler for person router (updates).
+     * DELETE API method handler for person router (removes).
      * @function deleteApi
      * @param {object} req - Represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, etc.
      * @param {object} res - Represents the HTTP response that an Express app sends when it gets an HTTP request.
