@@ -27,9 +27,13 @@ npm install
 ```
 npm start
 ```
-* Or if you want to start in Production mode, write:
+* Or if you want to start in Production mode in Windows, write:
 ```
-npm run production
+npm run production_win
+```
+* To run Production mode in Linux, write:
+```
+npm run production_lin
 ```
 * And the server will start running at [Localhost](http://localhost:9000) listening to port 9000.
 
