@@ -43,7 +43,7 @@ npm test
 ## Authors
 
 * **Luis Daniel** - *Developer*
-* **Alejandro Molloja** - *Developer?*
+* **Alejandro Cabrera** - *Developer*
 
 ## License
 
@@ -55,5 +55,6 @@ This project is licensed under the Apache License - see the [LICENSE.md](LICENSE
 * ExpressJS
 * Mongodb
 * Mochajs
-* Jenkis
+* Jenkins
+* Blue Ocean
 * Videogame gods
