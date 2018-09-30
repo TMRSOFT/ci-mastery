@@ -17,9 +17,9 @@ var personRouter = function (io) {
 	/**
      * GET method handler for person router.
      * @function get
-     * @param {object} req - Step Object to be added to the children array of steps.
-     * @param {object} res - Step Object to be added to the children array of steps.
-     * @param {object} next - Step Object to be added to the children array of steps.
+     * @param {object} req - Represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, etc.
+     * @param {object} res - Represents the HTTP response that an Express app sends when it gets an HTTP request.
+     * @param {object} next - Iindicates the next middleware function.
 	 * @memberof personRouter
      */
 	router.get('/', function (req, res, next) {
