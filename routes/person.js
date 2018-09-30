@@ -103,6 +103,26 @@ var personRouter = function (io) {
 	});
 
 	/**
+     * Delete method handler for person router (updates).
+     * @function deleteApi
+     * @param {object} req - Represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, etc.
+     * @param {object} res - Represents the HTTP response that an Express app sends when it gets an HTTP request.
+     * @param {object} next - Indicates the next middleware function.
+     * @memberof personRouter
+     */
+	router.delete('/api/', (req, res, next) => {
+		modelPerson.remove(req.body.id).then((id) => {
+			res.status(202);
+			res.setHeader('Content-Type', 'application/json');
+			res.json({
+				id: id,
+				message: `Query successfully executed, person removed correctly.`,
+				success: true 
+			});
+		});
+	});
+
+	/**
      * Socket io listener for insert/update/delete functions.
      * @function io
      * @param {SocketIO} io - Socket IO room for person router.

@@ -158,13 +158,13 @@ describe('Unit testing', function () {
 				.end(function (err, res) {
 					res.status.should.equal(202);
 					if (err) done(err);
-					res.body.should.have.property('data');
+					res.body.should.have.property('id');
 					res.body.should.have.property('message');
 					res.body.should.have.property('success');
-					assert.equal(true, res.body.data.success);
+					assert.equal(true, res.body.success);
+					assert.equal(testId, res.body.id);
 					done();
 				});
 		});
 	});
 });
-
