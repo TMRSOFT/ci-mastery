@@ -16,6 +16,14 @@ describe('Array', function () {
 	});
 });
 
+describe('Two plus 2', function () {
+	describe('#plus()', function () {
+		it('should return 4 when 2 plus 2', function () {
+			assert.equal(2 + 2, 4);
+		});
+	});
+});
+
 describe("SAMPLE unit test", function () {
 
 	// #1 should return home page
