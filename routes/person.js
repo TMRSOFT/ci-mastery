@@ -26,6 +26,7 @@ var personRouter = function (io) {
 		modelPerson.select().then((people) => {
 			res.render('person/index', {
 				title: 'Person',
+				version: req.app.get('version'),
 				people: people
 			});
 		});

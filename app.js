@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var packageJson = require('./package.json');
+var info = require('./package.json');
 
 var personRouter = require('./routes/person');
 var wikiRouter = require('./routes/wiki');
@@ -13,9 +13,10 @@ var app = express();
 var io = app.io = require('socket.io')();
 var ioPerson = io.of("/person");
 
-// view engine setup
+// app settings
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+app.set('version', info.version);
 
 app.use(logger('dev'));
 app.use(express.json());
