@@ -70,4 +70,3 @@ This project is licensed under the Apache License - see the [LICENSE.md](LICENSE
 * Blue Ocean
 * Google JavaScript Style Guide
 * Videogame gods
-* Vagrant
